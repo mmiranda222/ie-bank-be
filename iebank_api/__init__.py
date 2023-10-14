@@ -23,8 +23,6 @@ else:
     print("Running in production mode")
     app.config.from_object('config.ProductionConfig')
 
-CORS(app, resources={r"/*": {"origins": "*"}})
-
 db = SQLAlchemy(app)
 
 from iebank_api.models import Account
