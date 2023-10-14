@@ -11,11 +11,10 @@ permissions:
   id-token: write
 
 env:
-  BACKEND_WEBAPP_DEV: mmiranda-be-dev
+  BACKEND_WEBAPP_DEV: mmiranda-be-dev #CAMBIAR ESTO PARA DEPLOY A MI PROPIO WORKFLOW. EXTRA: usar application insight to monitor appliations. 
 
 jobs:
   build:
-    
     runs-on: ubuntu-latest
     env:
       ENV: ghci
