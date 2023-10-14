@@ -7,6 +7,15 @@ class Config(object):
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{dbuser}:{dbpass}@{dbhost}/{dbname}'.format(
+        dbuser=os.getenv('DBUSER'),
+        dbpass=os.getenv('DBPASS'),
+        dbhost=os.getenv('DBHOST'),
+        dbname=os.getenv('DBNAME')
+    )
+    DEBUG = False  # Set to False for production
+
 class LocalConfig(Config):
     basedir = os.path.abspath(os.path.dirname(__file__))
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir,'.db', 'local.db')
