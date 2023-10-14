@@ -9,6 +9,7 @@ def test_create_account():
     """
     account = Account('John Doe', '€')
     assert account.name == 'John Doe'
+    assert account.country == 'Spain'
     assert account.currency == '€'
     assert account.account_number != None
     assert account.balance == 0.0
