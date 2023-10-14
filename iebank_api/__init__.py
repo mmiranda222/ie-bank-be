@@ -7,6 +7,8 @@ from applicationinsights.flask.ext import AppInsights
 
 app = Flask(__name__)
 
+CORS(app, resources={r"/*": {"origins": "*"}})
+
 load_dotenv()
 
 # Select environment based on the ENV environment variable
