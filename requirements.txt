@@ -7,3 +7,4 @@ python-dotenv==0.21.0
 pytest
 pytest-cov
 Werkzeug==2.2.2
+applicationinsights==0.11.10

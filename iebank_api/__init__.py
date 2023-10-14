@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+from applicationinsights.flask.ext import AppInsights
 
 app = Flask(__name__)
 
@@ -21,6 +22,8 @@ elif os.getenv('ENV') == 'ghci':
 else:
     print("Running in production mode")
     app.config.from_object('config.ProductionConfig')
+
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 db = SQLAlchemy(app)
 
