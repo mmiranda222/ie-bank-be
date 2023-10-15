@@ -15,3 +15,63 @@ def test_create_account():
     assert account.account_number != None
     assert account.balance == 0.0
     assert account.status == 'Active'
+
+def test_account_representation():
+    """
+    GIVEN an account model
+    WHEN an account is represented
+    THEN check that the representation format is correct
+    """
+    account = Account('John Doe', 'Spain', '€')
+    representation = repr(account)
+    assert representation == f"<Event {account.account_number}>"
+
+def test_account_initial_balance():
+    """
+    GIVEN an account model
+    WHEN an account is created
+    THEN check that the initial balance is set to 0
+    """
+    account = Account('John Doe', 'Spain', '€')
+    assert account.balance == 0.0
+
+    account.balance = 100.0
+    assert account.balance == 100.0
+
+def test_account_status():
+    """
+    GIVEN an account model
+    WHEN an account is created
+    THEN check that the status is active
+    """
+    account = Account('John Doe', 'Spain', '€')
+    assert account.status == "Active"
+
+def update_account_status():
+    """
+    GIVEN an account model
+    WHEN an account is inactive
+    THEN check that the status is inactive
+    """
+    account = Account('John Doe', 'Spain', '€')
+    account.status = "Inactive"
+    assert account.status == "Inactive"
+
+def test_account_currency_set():
+    """
+    GIVEN an account model
+    WHEN an account is created
+    THEN check that the currency is set correctly
+    """
+    account = Account('John Doe', 'Spain', '€')
+    assert account.currency == "€"
+
+def test_account_country_set():
+    """
+    GIVEN an account model
+    WHEN an account is created
+    THEN check that the country is set correctly
+    """
+    account = Account('John Doe', 'Spain', '€')
+    # Then
+    assert account.country == "Spain"
