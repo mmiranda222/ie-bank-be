@@ -76,7 +76,7 @@ jobs:
       id: deploy-to-webapp
       with:
         app-name: ${{ env.BACKEND_WEBAPP_DEV }}
-        package: .
+        package: ./
   
   deploy-uat:
     if: github.ref == 'refs/heads/main'
@@ -102,4 +102,4 @@ jobs:
       id: deploy-to-webapp
       with:
         app-name: ${{ env.BACKEND_WEBAPP_UAT }}
-        package: .
+        package: ./
