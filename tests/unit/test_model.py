@@ -1,6 +1,7 @@
 from iebank_api.models import Account
 import pytest
 
+
 def test_create_account():
     """
     GIVEN a Account model
