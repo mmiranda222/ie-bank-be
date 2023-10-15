@@ -82,7 +82,7 @@ def test_delete_account(testing_client):
     """
     testing_client.post("/accounts", json={"name": "Test", "country": "Testland", "currency": "$"})
     response = testing_client.delete("/accounts/1")
-    assert response.status_code == 404
+    assert response.status_code == 200
 
 
 
