@@ -80,10 +80,19 @@ def test_delete_account(testing_client):
     WHEN request is made to the '/accounts/<id>' (DELETE)
     THEN check that the account corresponding to the provided ID is deleted
     """
-    testing_client.post("/accounts", json={"name": "Test", "country": "Test", "currency": "$"})
-    response = testing_client.delete('/accounts/1') 
-    assert response.status_code == 200
-    assert b'Test' not in response.data
+    with app.test_client() as client:
+        # Assuming the account with ID 1 exists and you have the account's data before deletion
+        response_before_deletion = client.post('/accounts', json={'name': 'John Doe', 'country': 'Spain', 'currency': '€'})
+        assert response_before_deletion.status_code == 200
+        assert b'John Doe' in response_before_deletion.data
+
+        response = client.delete('/accounts/1')  # Assuming account with ID 1 exists
+        assert response.status_code == 200
+        assert b'John Doe' in response.data
+
+        # Verify that the account is deleted
+        response_after_deletion = client.get('/accounts/1')
+        assert response_after_deletion.status_code == 404  # Assuming 404
 
 
 
