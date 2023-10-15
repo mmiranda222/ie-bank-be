@@ -82,7 +82,7 @@ def test_delete_account(testing_client):
     """
     with app.test_client() as client:
         # Assuming the account with ID 1 exists and you have the account's data before deletion
-        response_before_deletion = client.post('/accounts', json={'name': 'John Doe', 'country': 'Spain', 'currency': '€'})
+        response_before_deletion = client.get('/accounts/1')
         assert response_before_deletion.status_code == 200
         assert b'John Doe' in response_before_deletion.data
 
