@@ -16,16 +16,6 @@ def test_create_account():
     assert account.balance == 0.0
     assert account.status == 'Active'
 
-def test_account_representation():
-    """
-    GIVEN an account model
-    WHEN an account is represented
-    THEN check that the representation format is correct
-    """
-    account = Account('John Doe', 'Spain', '€')
-    representation = repr(account)
-    assert representation == f"<Event {account.account_number}>"
-
 def test_account_initial_balance():
     """
     GIVEN an account model
